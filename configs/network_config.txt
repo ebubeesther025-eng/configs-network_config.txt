@@ -1,0 +1,36 @@
+# Zero Trust Network Segmentation Configuration
+
+# Define VLANs
+vlan 10
+ name Users
+vlan 20
+ name Applications
+vlan 30
+ name Databases
+vlan 40
+ name Admin
+vlan 50
+ name Guest
+
+# Assign VLANs to interfaces
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 30
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 40
+
+interface FastEthernet0/5
+ switchport mode access
+ switchport access vlan 50
+
+# Enable trunking for upl
