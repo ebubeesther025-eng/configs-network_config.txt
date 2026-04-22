@@ -1,0 +1,25 @@
+# Zero Trust Access Policies
+
+Role: User
+- Access: Applications only (via HTTPS)
+- Restrictions: No direct database access
+- Authentication: Multi-Factor Authentication (MFA) required
+- Logging: All activity monitored
+
+Role: Application Server
+- Access: Databases only (via SQL port 3306)
+- Restrictions: No direct user access
+- Authentication: Service account credentials
+- Logging: Query activity logged
+
+Role: Admin
+- Access: All zones (Users, Applications, Databases, Guest)
+- Restrictions: Elevated privileges only with MFA + device compliance
+- Authentication: MFA + endpoint security verification
+- Logging: Full audit trail required
+
+Role: Guest
+- Access: Internet only
+- Restrictions: No access to internal VLANs
+- Authentication: Captive portal login
+- Logging: Internet usage monitored
