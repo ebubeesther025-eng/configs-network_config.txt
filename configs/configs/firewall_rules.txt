@@ -1,0 +1,23 @@
+# Zero Trust Firewall Rules
+
+# Rule 1: Allow Users → Applications (HTTPS only)
+allow vlan10 to vlan20 on port 443
+
+# Rule 2: Allow Applications → Databases (SQL only)
+allow vlan20 to vlan30 on port 3306
+
+# Rule 3: Deny Users → Databases (no direct access)
+deny vlan10 to vlan30
+
+# Rule 4: Admin Zone requires MFA for all access
+allow vlan40 to all with MFA
+
+# Rule 5: Guest VLAN restricted to Internet only
+allow vlan50 to internet
+deny vlan50 to vlan10
+deny vlan50 to vlan20
+deny vlan50 to vlan30
+deny vlan50 to vlan40
+
+# Rule 6: Log all traffic for monitoring and auditing
+log all
